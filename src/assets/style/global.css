@@ -1,0 +1,16 @@
+@tailwind components;
+@tailwind utilities;
+
+*, *::after, *::before {
+  @apply box-border;
+}
+html, body {
+  @apply overflow-x-hidden
+}
+body {
+  @apply m-0 min-h-screen;
+  font-family: Roboto, sans-serif;
+}
+a {
+  @apply text-current no-underline
+}
