@@ -17,3 +17,8 @@ export const setCheck = (id: string) => ([...points]: Point[]) => {
 export const removePoint = (id: string) => (points: Point[]) => {
   return points.filter(point => point.id != id);
 };
+
+export const count = <T>(arr: T[], callback: (val: T, i: number, arr: T[]) => boolean) => arr.reduce(
+  (acc, cur, i) => acc + Number(callback(cur, i, arr)),
+  0,
+);

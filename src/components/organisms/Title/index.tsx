@@ -7,7 +7,7 @@ const setTheme = (darkMode: boolean) => {
 };
 
 const Title = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(window.matchMedia?.('(prefers-color-scheme: dark)').matches);
   useEffect(() => setTheme(darkMode), [darkMode]);
 
   return (
