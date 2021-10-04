@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import Input from '~/components/molecules/Input';
-import { createPoint } from './helpers';
+import CheckPoint from '~/components/molecules/CheckPoint';
+import { createPoint, removePoint, setCheck } from './helpers';
 import { Point } from './types';
+
+
 
 const List = () => {
   const [points, setPoints] = useState<Point[]>([]);
 
   return (
-    <div className='w-[40vw]'>
+    <div>
       <Input onCommit={point => setPoints(old => [...old, createPoint(point)])} />
-      <ul>
-        {
-          points.map(
-            ({ id, text }) => <li key={id}>{text}</li>,
-          )
-        }
-      </ul>
+      <div className='bg-gray-800 dark:text-white shadow mt-8'>
+        <ul className='p-0 px-6'>
+          {
+            points.map(
+              ({ id, text, check }) => <CheckPoint
+                key={id}
+                check={check}
+                text={text}
+                onCircleClick={() => setPoints(setCheck(id))}
+                onXClick={() => setPoints(removePoint(id))}
+              />,
+            )
+          }
+        </ul>
+      </div>
     </div>
   );
 };
