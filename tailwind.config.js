@@ -3,11 +3,7 @@ module.exports = {
     purge: ['./index.html', './src/**/*.{js,ts,jsx,tsx,vue}'],
     darkMode: 'class',
     theme: {
-        extend: {
-            animation: {
-                'spin-slow': 'spin 3s linear infinite',
-            },
-        },
+        extend: {},
     },
     variants: {
         extend: {},
