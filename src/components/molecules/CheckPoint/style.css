@@ -1,0 +1,7 @@
+.hover-visible-svg__root .hover-visible-svg__svg {
+  visibility: hidden;
+}
+
+.hover-visible-svg__root:hover .hover-visible-svg__svg {
+  visibility: visible;
+}
