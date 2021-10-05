@@ -14,3 +14,20 @@ body {
 a {
   @apply text-current no-underline
 }
+
+.hover-visible-svg__root .hover-visible-svg__svg {
+  visibility: hidden;
+}
+
+.hover-visible-svg__root:hover .hover-visible-svg__svg {
+  visibility: visible;
+}
+
+
+
+@media (max-width: 640px) {
+  .bottom-menu-center-buttons {
+    @apply gap-6 absolute right-0 left-0 mx-auto -bottom-16
+    text-lg justify-center items-center w-[90vw] h-12 dark:bg-gray-800 shadow-lg rounded
+  }
+}

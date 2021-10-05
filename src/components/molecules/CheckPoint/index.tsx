@@ -1,6 +1,5 @@
 import React from 'react';
 import CircleBox from '~/components/atoms/CircleBox';
-import './style.css';
 
 interface PointProps {
   check: boolean,
@@ -14,7 +13,7 @@ const CheckPoint = ({ text, check, onCircleClick, onXClick }: PointProps) => {
     <div className='flex items-center justify-between gap-4 py-2 hover-visible-svg__root
       border-solid border-0 border-b-[1px] border-gray-200 dark:border-gray-700 px-6'>
       <CircleBox check={check} onClick={onCircleClick} />
-      <p className='flex-1 text-gray-800 dark:text-white'>{text}</p>
+      <p className={`flex-1 ${check ? 'line-through text-gray-400' : 'text-gray-800 dark:text-white'}`}>{text}</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"

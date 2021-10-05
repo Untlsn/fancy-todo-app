@@ -9,11 +9,13 @@ interface BottomMenu {
 
 const BottomMenu = ({ leftPoints, onClear, filter, setFilter }: BottomMenu) => {
   return (
-    <div className='flex justify-between items-center text-sm px-6 pb-3 text-gray-600'>
+    <div className='flex justify-between items-center text-sm px-6 pb-3 relative'>
       <span>
         {leftPoints} points left
       </span>
-      <div className='flex gap-2'>
+      <div className='flex sm:gap-2
+        bottom-menu-center-buttons
+        '>
         {
           ['All', 'Active', 'Completed'].map(
             (text, i) => (
@@ -25,7 +27,7 @@ const BottomMenu = ({ leftPoints, onClear, filter, setFilter }: BottomMenu) => {
         }
       </div>
       <button
-        className='border-none bg-transparent text-gray-500 font-bold cursor-pointer'
+        className='border-none bg-transparent font-bold cursor-pointer text-current'
         onClick={onClear}
       >
         Clear Completed

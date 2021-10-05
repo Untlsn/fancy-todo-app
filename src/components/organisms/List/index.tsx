@@ -28,7 +28,7 @@ const List = () => {
   return (
     <div>
       <Input onCommit={point => setPoints(old => [...old, createPoint(point)])} />
-      <div className='bg-white dark:bg-gray-800 dark:text-white shadow-lg mt-8 rounded'>
+      <div className='bg-white dark:bg-gray-800 shadow-lg mt-8 rounded'>
         <DragDropContext onDragEnd={changePointsDirection}>
           <Droppable droppableId='points'>
             {provided => (
