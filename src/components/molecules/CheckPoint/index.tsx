@@ -1,18 +1,26 @@
 import React from 'react';
 import CircleBox from '~/components/atoms/CircleBox';
+import { points, setPoints } from '~/store/points';
+import { useReload } from '~/hooks/useReload';
 
 interface PointProps {
-  check: boolean,
-  text: string,
-  onCircleClick(bool: boolean): void
+  id: string,
   onXClick(): void
 }
 
-const CheckPoint = ({ text, check, onCircleClick, onXClick }: PointProps) => {
+const CheckPoint = ({ onXClick, id }: PointProps) => {
+  const { text, check } = points().find(it => it.id == id)!;
+  const reload = useReload();
+
   return (
     <div className='flex items-center justify-between gap-4 py-2 hover-visible-svg__root
       border-solid border-0 border-b-[1px] border-gray-200 dark:border-gray-700 px-6'>
-      <CircleBox check={check} onClick={onCircleClick} />
+      <CircleBox check={check} onClick={() => {
+        setPoints(old => {
+          old.find(it => it.id == id)!.check = !check;
+        });
+        reload();
+      }} />
       <p className={`flex-1 ${check ? 'line-through text-gray-400' : 'text-gray-800 dark:text-white'}`}>{text}</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"

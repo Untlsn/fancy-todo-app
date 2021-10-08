@@ -1,34 +1,16 @@
-import React from 'react';
+import React  from 'react';
+import { setPoints } from '~/store/points';
+import LeftCounter from '~/components/atoms/LeftCounter';
+import Filter from '~/components/atoms/Filter';
 
-interface BottomMenu {
-  leftPoints: number
-  onClear(): void
-  filter: number
-  setFilter(index: number): void
-}
-
-const BottomMenu = ({ leftPoints, onClear, filter, setFilter }: BottomMenu) => {
+const BottomMenu = () => {
   return (
     <div className='flex justify-between items-center text-sm px-6 pb-3 relative'>
-      <span>
-        {leftPoints} points left
-      </span>
-      <div className='flex sm:gap-2
-        bottom-menu-center-buttons
-        '>
-        {
-          ['All', 'Active', 'Completed'].map(
-            (text, i) => (
-              <span key={i} onClick={() => setFilter(i)} className={`cursor-pointer ${filter == i && 'text-blue-600'}`}>
-                {text}
-              </span>
-            ),
-          )
-        }
-      </div>
+      <LeftCounter />
+      <Filter />
       <button
         className='border-none bg-transparent font-bold cursor-pointer text-current'
-        onClick={onClear}
+        onClick={() => setPoints(old => old.filter(val => !val.check))}
       >
         Clear Completed
       </button>

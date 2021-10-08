@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import bgDD from '~/assets/images/bg-desktop-dark.jpg';
-import bgDL from '~/assets/images/bg-desktop-light.jpg';
-
-const setTheme = (darkMode: boolean) => {
-  const lists = document.querySelector('body')!.classList;
-  if (darkMode) lists.add('dark');
-  else lists.remove('dark');
-};
+import React from 'react';
+import { setDarkMode } from '~/store/darkMode';
+import BackImage from '~/components/atoms/BackImage';
 
 const Title = () => {
-  const [darkMode, setDarkMode] = useState(window.matchMedia?.('(prefers-color-scheme: dark)').matches);
-  useEffect(() => setTheme(darkMode), [darkMode]);
-
   return (
     <>
       <div className='absolute top-0 left-0 z-[-1] h-screen w-screen dark:bg-gray-900'>
-        <img src={darkMode ? bgDD : bgDL} alt="" className='absolute top-0 left-0 z-[-1]'/>
+        <BackImage />
       </div>
       <div className='flex items-center justify-between text-white mt-14 mb-6'>
         <h1 className='tracking-[1rem] text-4xl'>TODO</h1>

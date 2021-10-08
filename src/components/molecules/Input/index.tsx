@@ -1,16 +1,18 @@
 import React, { useRef } from 'react';
 import CircleBox from '~/components/atoms/CircleBox';
 import { onEnter } from '~/components/molecules/Input/helpers';
+import { createPoint } from '~/components/organisms/List/helpers';
+import { setPoints } from '~/store/points';
 
-interface InputProps {
-  onCommit(text: string): void
-}
+const commitPoint = (name: string) => setPoints(old => {
+  old.push(createPoint(name));
+});
 
-const Input = ({ onCommit }: InputProps) => {
+const Input = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const commit = () => {
     if (inputRef.current?.value) {
-      onCommit(inputRef.current!.value);
+      commitPoint(inputRef.current!.value);
       inputRef.current!.value = '';
     }
   };
